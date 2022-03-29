@@ -1,0 +1,50 @@
+[
+  {
+    "directory": "/home/escopetilla/Desktop/PAV/P3/builddir",
+    "command": "c++ -Isrc/pav/libpav.a.p -Isrc/pav -I../src/pav -I../src/include -I../src/pav/docopt_cpp -fdiagnostics-color=always -pipe -D_FILE_OFFSET_BITS=64 -Wall -Winvalid-pch -Wnon-virtual-dtor -std=c++11 -g -fPIC -MD -MQ src/pav/libpav.a.p/digital_filter.cpp.o -MF src/pav/libpav.a.p/digital_filter.cpp.o.d -o src/pav/libpav.a.p/digital_filter.cpp.o -c ../src/pav/digital_filter.cpp",
+    "file": "../src/pav/digital_filter.cpp",
+    "output": "src/pav/libpav.a.p/digital_filter.cpp.o"
+  },
+  {
+    "directory": "/home/escopetilla/Desktop/PAV/P3/builddir",
+    "command": "c++ -Isrc/pav/libpav.a.p -Isrc/pav -I../src/pav -I../src/include -I../src/pav/docopt_cpp -fdiagnostics-color=always -pipe -D_FILE_OFFSET_BITS=64 -Wall -Winvalid-pch -Wnon-virtual-dtor -std=c++11 -g -fPIC -MD -MQ src/pav/libpav.a.p/filename.cpp.o -MF src/pav/libpav.a.p/filename.cpp.o.d -o src/pav/libpav.a.p/filename.cpp.o -c ../src/pav/filename.cpp",
+    "file": "../src/pav/filename.cpp",
+    "output": "src/pav/libpav.a.p/filename.cpp.o"
+  },
+  {
+    "directory": "/home/escopetilla/Desktop/PAV/P3/builddir",
+    "command": "c++ -Isrc/pav/libpav.a.p -Isrc/pav -I../src/pav -I../src/include -I../src/pav/docopt_cpp -fdiagnostics-color=always -pipe -D_FILE_OFFSET_BITS=64 -Wall -Winvalid-pch -Wnon-virtual-dtor -std=c++11 -g -fPIC -MD -MQ src/pav/libpav.a.p/keyvalue.cpp.o -MF src/pav/libpav.a.p/keyvalue.cpp.o.d -o src/pav/libpav.a.p/keyvalue.cpp.o -c ../src/pav/keyvalue.cpp",
+    "file": "../src/pav/keyvalue.cpp",
+    "output": "src/pav/libpav.a.p/keyvalue.cpp.o"
+  },
+  {
+    "directory": "/home/escopetilla/Desktop/PAV/P3/builddir",
+    "command": "c++ -Isrc/pav/libpav.a.p -Isrc/pav -I../src/pav -I../src/include -I../src/pav/docopt_cpp -fdiagnostics-color=always -pipe -D_FILE_OFFSET_BITS=64 -Wall -Winvalid-pch -Wnon-virtual-dtor -std=c++11 -g -fPIC -MD -MQ src/pav/libpav.a.p/wavfile_mono.cpp.o -MF src/pav/libpav.a.p/wavfile_mono.cpp.o.d -o src/pav/libpav.a.p/wavfile_mono.cpp.o -c ../src/pav/wavfile_mono.cpp",
+    "file": "../src/pav/wavfile_mono.cpp",
+    "output": "src/pav/libpav.a.p/wavfile_mono.cpp.o"
+  },
+  {
+    "directory": "/home/escopetilla/Desktop/PAV/P3/builddir",
+    "command": "c++ -Isrc/pav/libpav.a.p -Isrc/pav -I../src/pav -I../src/include -I../src/pav/docopt_cpp -fdiagnostics-color=always -pipe -D_FILE_OFFSET_BITS=64 -Wall -Winvalid-pch -Wnon-virtual-dtor -std=c++11 -g -fPIC -MD -MQ src/pav/libpav.a.p/docopt_cpp_docopt.cpp.o -MF src/pav/libpav.a.p/docopt_cpp_docopt.cpp.o.d -o src/pav/libpav.a.p/docopt_cpp_docopt.cpp.o -c ../src/pav/docopt_cpp/docopt.cpp",
+    "file": "../src/pav/docopt_cpp/docopt.cpp",
+    "output": "src/pav/libpav.a.p/docopt_cpp_docopt.cpp.o"
+  },
+  {
+    "directory": "/home/escopetilla/Desktop/PAV/P3/builddir",
+    "command": "c++ -Isrc/get_pitch/get_pitch.p -Isrc/get_pitch -I../src/get_pitch -I../src/include -I../src/pav/docopt_cpp -fdiagnostics-color=always -pipe -D_FILE_OFFSET_BITS=64 -Wall -Winvalid-pch -Wnon-virtual-dtor -std=c++11 -g -MD -MQ src/get_pitch/get_pitch.p/get_pitch.cpp.o -MF src/get_pitch/get_pitch.p/get_pitch.cpp.o.d -o src/get_pitch/get_pitch.p/get_pitch.cpp.o -c ../src/get_pitch/get_pitch.cpp",
+    "file": "../src/get_pitch/get_pitch.cpp",
+    "output": "src/get_pitch/get_pitch.p/get_pitch.cpp.o"
+  },
+  {
+    "directory": "/home/escopetilla/Desktop/PAV/P3/builddir",
+    "command": "c++ -Isrc/get_pitch/get_pitch.p -Isrc/get_pitch -I../src/get_pitch -I../src/include -I../src/pav/docopt_cpp -fdiagnostics-color=always -pipe -D_FILE_OFFSET_BITS=64 -Wall -Winvalid-pch -Wnon-virtual-dtor -std=c++11 -g -MD -MQ src/get_pitch/get_pitch.p/pitch_analyzer.cpp.o -MF src/get_pitch/get_pitch.p/pitch_analyzer.cpp.o.d -o src/get_pitch/get_pitch.p/pitch_analyzer.cpp.o -c ../src/get_pitch/pitch_analyzer.cpp",
+    "file": "../src/get_pitch/pitch_analyzer.cpp",
+    "output": "src/get_pitch/get_pitch.p/pitch_analyzer.cpp.o"
+  },
+  {
+    "directory": "/home/escopetilla/Desktop/PAV/P3/builddir",
+    "command": "c++ -Isrc/get_pitch/pitch_evaluate.p -Isrc/get_pitch -I../src/get_pitch -I../src/include -I../src/pav/docopt_cpp -fdiagnostics-color=always -pipe -D_FILE_OFFSET_BITS=64 -Wall -Winvalid-pch -Wnon-virtual-dtor -std=c++11 -g -MD -MQ src/get_pitch/pitch_evaluate.p/pitch_evaluate.cpp.o -MF src/get_pitch/pitch_evaluate.p/pitch_evaluate.cpp.o.d -o src/get_pitch/pitch_evaluate.p/pitch_evaluate.cpp.o -c ../src/get_pitch/pitch_evaluate.cpp",
+    "file": "../src/get_pitch/pitch_evaluate.cpp",
+    "output": "src/get_pitch/pitch_evaluate.p/pitch_evaluate.cpp.o"
+  }
+]
