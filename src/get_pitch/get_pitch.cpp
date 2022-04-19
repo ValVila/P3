@@ -67,7 +67,6 @@ int main(int argc, const char *argv[]) {
   float poth = stof(args["--poth"].asString());
   
   /// \DONE added umaxnorm u1norm and poth
-  float max_pot = 0.0;
   float th_cc = 0.0;  //threshold for central-clipping
   // Read input sound file
   unsigned int rate;
@@ -90,12 +89,8 @@ int main(int argc, const char *argv[]) {
   //Normalizamos i aplicamos central-clipping a la vez de la
   //Primeramente cojemos el valor maximo de potencia para normalizar el señal
 
-  for(long unsigned int i=0; i < x.size(); i++){
-    if(x[i] > max_pot){
-      max_pot = x[i];
-    }
-  }
-  th_cc= 0.03 * max_pot;
+  float maxp = *std::max_element(x.begin(), x.end());
+  th_cc= 0.027 * maxp;
   for(long unsigned int i = 0; i < x.size(); i++){
     if(abs(x[i]) < th_cc){
       x[i]=0;
