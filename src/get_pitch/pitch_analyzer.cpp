@@ -39,7 +39,7 @@ namespace upc {
     case HAMMING:
     
       /// \TODO Implement the Hamming window
-      /// \FET Finestra de Hamming implementada
+      /// /**\DONE Finestra de Hamming implementada*/
       for (unsigned int i = 0; i < frameLen; i++){
 
         window[i]= 0.54 - 0.28 * cosl(omega * i); 
@@ -68,13 +68,20 @@ namespace upc {
     /// \TODO Implement a rule to decide whether the sound is voiced or not.
     /// * You can use the standard features (pot, r1norm, rmaxnorm),
     ///   or compute and use other ones.
-    if(rmaxnorm > umaxnorm && r1norm > u1norm && pot > poth) return false;
+    if(rmaxnorm >= umaxnorm && r1norm >= u1norm && pot >= poth) return false;
     return true;
+    /// \DONE 
   }
 
   float PitchAnalyzer::compute_pitch(vector<float> & x) const {
     if (x.size() != frameLen)
       return -1.0F;
+      
+      float max_pot = *std::max_element(x.begin(), x.end());
+      max_pot = *std::max_element(x.begin(), x.end());
+      for (int i = 0; i < (int)x.size(); i++)
+      x[i] = x[i]/ max_pot;
+
 
     //Window input frame
     for (unsigned int i=0; i<x.size(); ++i)

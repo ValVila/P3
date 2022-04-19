@@ -97,11 +97,13 @@ int main(int argc, const char *argv[]) {
   }
   th_cc= 0.03 * max_pot;
   for(long unsigned int i = 0; i < x.size(); i++){
-    x[i] = x[i] / max_pot;
     if(abs(x[i]) < th_cc){
       x[i]=0;
     }
+    
   }
+
+
   /// \DONE central-clipping 
 
 
@@ -119,20 +121,18 @@ int main(int argc, const char *argv[]) {
   /// or time-warping may be used.
   // median filter zero padding
   
-  vector<float> median(f0.size(),0);
-  vector<float> h0(3,0);
-  
-  median[0] = MOT(h0[0],h0[1],h0[2]);
-  for (long unsigned int i = 1; i <f0.size(); i++){
-    h0[0] = f0[i-1];
-    h0[1] = f0[i];
-    h0[2] = f0[i+1];
-    median[i] = MOT(h0[0],h0[1],h0[2]);
-  }
-  h0[0]=f0[f0.size()-1];
-  h0[1]=f0[f0.size()];
-  h0[2]=0;
+ 
+  vector<float> median(f0);
+  float min1, max1;
 
+  for(unsigned int i=2;i<median.size()-1;i++){
+    min1=min(min(median[i-1],median[i]),median[i+1]);
+    max1=max(max(median[i-1],median[i]),median[i+1]);
+    f0[i]=median[i-1]+median[i]+median[i+1]-min1-max1;
+
+  }
+
+  
   /// \DONE median filter zero padding
   // Write f0 contour into the output file
   ofstream os(output_txt);
