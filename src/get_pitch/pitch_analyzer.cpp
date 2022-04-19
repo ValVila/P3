@@ -27,42 +27,31 @@ namespace upc {
       r[0] = 1e-10; 
   }
 
-  /*void PitchAnalyzer::set_window(Window win_type) {
-    if (frameLen == 0)
-      return;
-
-    window.resize(frameLen);
-
-    switch (win_type) {
-    case HAMMING:
-      /// \TODO Implement the Hamming window
-      for(unsigned int i = 0; i<frameLen; i++){
-        window[i] = 0.53836 - 0.46164*cos(2*M_PI*i/(frameLen -1));
-      }
-      break;
-      /// \DONE Implemented Hamming window
-    case RECT:
-    default:
-      window.assign(frameLen, 1);
-    }
-  }
-*/
+  
   void PitchAnalyzer::set_window(Window win_type) {
     if (frameLen == 0)
       return;
 
     window.resize(frameLen);
+    float omega = 2.0*3.141592/(frameLen -1);
 
     switch (win_type) {
     case HAMMING:
+    
       /// \TODO Implement the Hamming window
-      window.assign(frameLen, 1);//ojo ficar una de hamming
+      /// \FET Finestra de Hamming implementada
+      for (unsigned int i = 0; i < frameLen; i++){
+
+        window[i]= 0.54 - 0.28 * cosl(omega * i); 
+      }
       break;
     case RECT:
     default:
       window.assign(frameLen, 1);
     }
   }
+
+  
   void PitchAnalyzer::set_f0_range(float min_F0, float max_F0) {
     npitch_min = (unsigned int) samplingFreq/max_F0;
     if (npitch_min < 2)

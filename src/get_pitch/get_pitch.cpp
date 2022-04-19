@@ -37,6 +37,19 @@ Arguments:
                     - One line per frame with the estimated f0
                     - If considered unvoiced, f0 must be set to f0 = 0
 )";
+int MOT(int a, int b, int c) //middle of 3 values
+{
+    // Checking for b
+    if ((a < b && b < c) || (c < b && b < a))
+       return b;
+ 
+    // Checking for a
+    else if ((b < a && a < c) || (c < a && a < b))
+       return a;
+ 
+    else
+       return c;
+}
 
 int main(int argc, const char *argv[]) {
 	/// \TODO 
@@ -53,6 +66,7 @@ int main(int argc, const char *argv[]) {
   float u1norm = stof(args["--u1norm"].asString());
   float poth = stof(args["--poth"].asString());
   
+  /// \DONE added umaxnorm u1norm and poth
   float max_pot = 0.0;
   float th_cc = 0.0;  //threshold for central-clipping
   // Read input sound file
@@ -88,6 +102,7 @@ int main(int argc, const char *argv[]) {
       x[i]=0;
     }
   }
+  /// \DONE central-clipping 
 
 
 
@@ -102,7 +117,23 @@ int main(int argc, const char *argv[]) {
   /// \TODO
   /// Postprocess the estimation in order to supress errors. For instance, a median filter
   /// or time-warping may be used.
+  // median filter zero padding
+  
+  vector<float> median(f0.size(),0);
+  vector<float> h0(3,0);
+  
+  median[0] = MOT(h0[0],h0[1],h0[2]);
+  for (long unsigned int i = 1; i <f0.size(); i++){
+    h0[0] = f0[i-1];
+    h0[1] = f0[i];
+    h0[2] = f0[i+1];
+    median[i] = MOT(h0[0],h0[1],h0[2]);
+  }
+  h0[0]=f0[f0.size()-1];
+  h0[1]=f0[f0.size()];
+  h0[2]=0;
 
+  /// \DONE median filter zero padding
   // Write f0 contour into the output file
   ofstream os(output_txt);
   if (!os.good()) {
