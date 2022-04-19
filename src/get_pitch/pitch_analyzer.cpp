@@ -27,6 +27,26 @@ namespace upc {
       r[0] = 1e-10; 
   }
 
+  /*void PitchAnalyzer::set_window(Window win_type) {
+    if (frameLen == 0)
+      return;
+
+    window.resize(frameLen);
+
+    switch (win_type) {
+    case HAMMING:
+      /// \TODO Implement the Hamming window
+      for(unsigned int i = 0; i<frameLen; i++){
+        window[i] = 0.53836 - 0.46164*cos(2*M_PI*i/(frameLen -1));
+      }
+      break;
+      /// \DONE Implemented Hamming window
+    case RECT:
+    default:
+      window.assign(frameLen, 1);
+    }
+  }
+*/
   void PitchAnalyzer::set_window(Window win_type) {
     if (frameLen == 0)
       return;
@@ -43,7 +63,6 @@ namespace upc {
       window.assign(frameLen, 1);
     }
   }
-
   void PitchAnalyzer::set_f0_range(float min_F0, float max_F0) {
     npitch_min = (unsigned int) samplingFreq/max_F0;
     if (npitch_min < 2)
@@ -60,7 +79,7 @@ namespace upc {
     /// \TODO Implement a rule to decide whether the sound is voiced or not.
     /// * You can use the standard features (pot, r1norm, rmaxnorm),
     ///   or compute and use other ones.
-    if(rmaxnorm > umaxnorm) return false;
+    if(rmaxnorm > umaxnorm && r1norm > u1norm && pot > poth) return false;
     return true;
   }
 
@@ -92,7 +111,7 @@ namespace upc {
     if(*iR>*iRMax)iRMax=iR;
   }
     unsigned int lag = iRMax - r.begin();
-
+    /// \DONE Lag value calculated
     float pot = 10 * log10(r[0]);
 
     //You can print these (and other) features, look at them using wavesurfer

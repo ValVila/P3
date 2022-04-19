@@ -26,8 +26,8 @@ Usage:
 
 Options:
     -m FLOAT, --umaxnorm=FLOAT  umbral autocorrelación a largo plazo [default: 0.5]
-    -1 FLOAT, --u1norm=FLOAT  umbral autocorrelación [default: 0.5]
-    -p FLOAT, --pot=FLOAT  umbral potencia [default: 0.5]
+    -1 FLOAT, --u1norm=FLOAT  umbral autocorrelación [default: 0.4]
+    -p FLOAT, --poth=FLOAT  umbral potencia [default: -16]
     -h, --help  Show this screen
     --version   Show the version of the project
 
@@ -50,7 +50,11 @@ int main(int argc, const char *argv[]) {
 	std::string input_wav = args["<input-wav>"].asString();
 	std::string output_txt = args["<output-txt>"].asString();
   float umaxnorm = stof(args["--umaxnorm"].asString());
+  float u1norm = stof(args["--u1norm"].asString());
+  float poth = stof(args["--poth"].asString());
   
+  float max_pot = 0.0;
+  float th_cc = 0.0;  //threshold for central-clipping
   // Read input sound file
   unsigned int rate;
   vector<float> x;
@@ -63,12 +67,30 @@ int main(int argc, const char *argv[]) {
   int n_shift = rate * FRAME_SHIFT;
 
   // Define analyzer
-  PitchAnalyzer analyzer(n_len, rate, umaxnorm, PitchAnalyzer::HAMMING, 50, 500);
+  PitchAnalyzer analyzer(n_len, rate, umaxnorm, u1norm, poth, PitchAnalyzer::HAMMING, 50, 500);
 
   /// \TODO
   /// Preprocess the input signal in order to ease pitch estimation. For instance,
   /// central-clipping or low pass filtering may be used.
   
+  //Normalizamos i aplicamos central-clipping a la vez de la
+  //Primeramente cojemos el valor maximo de potencia para normalizar el señal
+
+  for(long unsigned int i=0; i < x.size(); i++){
+    if(x[i] > max_pot){
+      max_pot = x[i];
+    }
+  }
+  th_cc= 0.03 * max_pot;
+  for(long unsigned int i = 0; i < x.size(); i++){
+    x[i] = x[i] / max_pot;
+    if(abs(x[i]) < th_cc){
+      x[i]=0;
+    }
+  }
+
+
+
   // Iterate for each frame and save values in f0 vector
   vector<float>::iterator iX;
   vector<float> f0;
