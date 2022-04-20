@@ -10,7 +10,7 @@
 
 #include "docopt.h"
 
-#define FRAME_LEN   0.030 /* 30 ms. */
+#define FRAME_LEN 0.030   /* 30 ms. */
 #define FRAME_SHIFT 0.015 /* 15 ms. */
 
 using namespace std;
@@ -38,28 +38,29 @@ Arguments:
                     - If considered unvoiced, f0 must be set to f0 = 0
 )";
 
+int main(int argc, const char *argv[])
+{
+  /// \TODO
+  ///  Modify the program syntax and the call to **docopt()** in order to
+  ///  add options and arguments to the program.
+  std::map<std::string, docopt::value> args = docopt::docopt(USAGE,
+                                                             {argv + 1, argv + argc}, // array of arguments, without the program name
+                                                             true,                    // show help if requested
+                                                             "2.0");                  // version string
 
-int main(int argc, const char *argv[]) {
-	/// \TODO 
-	///  Modify the program syntax and the call to **docopt()** in order to
-	///  add options and arguments to the program.
-    std::map<std::string, docopt::value> args = docopt::docopt(USAGE,
-        {argv + 1, argv + argc},	// array of arguments, without the program name
-        true,    // show help if requested
-        "2.0");  // version string
-
-	std::string input_wav = args["<input-wav>"].asString();
-	std::string output_txt = args["<output-txt>"].asString();
+  std::string input_wav = args["<input-wav>"].asString();
+  std::string output_txt = args["<output-txt>"].asString();
   float umaxnorm = stof(args["--umaxnorm"].asString());
   float u1norm = stof(args["--u1norm"].asString());
   float poth = stof(args["--poth"].asString());
-  
+
   /// \DONE added umaxnorm u1norm and poth
-  float th_cc = 0.0;  //threshold for central-clipping
+  float th_cc = 0.0; // threshold for central-clipping
   // Read input sound file
   unsigned int rate;
   vector<float> x;
-  if (readwav_mono(input_wav, rate, x) != 0) {
+  if (readwav_mono(input_wav, rate, x) != 0)
+  {
     cerr << "Error reading input file " << input_wav << " (" << strerror(errno) << ")\n";
     return -2;
   }
@@ -73,25 +74,27 @@ int main(int argc, const char *argv[]) {
   /// \TODO
   /// Preprocess the input signal in order to ease pitch estimation. For instance,
   /// central-clipping or low pass filtering may be used.
-  
-  //Normalizamos i aplicamos central-clipping a la vez de la
-  //Primeramente cojemos el valor maximo de potencia para normalizar el señal
+
+  // Normalizamos i aplicamos central-clipping a la vez de la
+  // Primeramente cojemos el valor maximo de potencia para normalizar el señal
 
   float maxp = *std::max_element(x.begin(), x.end());
-  th_cc= 0.027 * maxp;
-  for(long unsigned int i = 0; i < x.size(); i++){
-    if(abs(x[i]) < th_cc){
-      x[i]=0;
+  th_cc = 0.027 * maxp;
+  for (long unsigned int i = 0; i < x.size(); i++)
+  {
+    if (abs(x[i]) < th_cc)
+    {
+      x[i] = 0;
     }
-    
   }
 
-  /// \DONE central-clipping 
+  /// \DONE central-clipping
 
   // Iterate for each frame and save values in f0 vector
   vector<float>::iterator iX;
   vector<float> f0;
-  for (iX = x.begin(); iX + n_len < x.end(); iX = iX + n_shift) {
+  for (iX = x.begin(); iX + n_len < x.end(); iX = iX + n_shift)
+  {
     float f = analyzer(iX, iX + n_len);
     f0.push_back(f);
   }
@@ -100,31 +103,30 @@ int main(int argc, const char *argv[]) {
   /// Postprocess the estimation in order to supress errors. For instance, a median filter
   /// or time-warping may be used.
   // median filter zero padding
-  
- 
+
   vector<float> median(f0);
   float min1, max1;
 
-  for(unsigned int i=2;i<median.size()-1;i++){
-    min1=min(min(median[i-1],median[i]),median[i+1]);
-    max1=max(max(median[i-1],median[i]),median[i+1]);
-    f0[i]=median[i-1]+median[i]+median[i+1]-min1-max1;
-
+  for (unsigned int i = 2; i < median.size() - 1; i++)
+  {
+    min1 = min(min(median[i - 1], median[i]), median[i + 1]);
+    max1 = max(max(median[i - 1], median[i]), median[i + 1]);
+    f0[i] = median[i - 1] + median[i] + median[i + 1] - min1 - max1;
   }
 
-  
   /// \DONE median filter zero padding
   // Write f0 contour into the output file
   ofstream os(output_txt);
-  if (!os.good()) {
+  if (!os.good())
+  {
     cerr << "Error reading output file " << output_txt << " (" << strerror(errno) << ")\n";
     return -3;
   }
 
-  os << 0 << '\n'; //pitch at t=0
-  for (iX = f0.begin(); iX != f0.end(); ++iX) 
+  os << 0 << '\n'; // pitch at t=0
+  for (iX = f0.begin(); iX != f0.end(); ++iX)
     os << *iX << '\n';
-  os << 0 << '\n';//pitch at t=Dur
+  os << 0 << '\n'; // pitch at t=Dur
 
   return 0;
 }
