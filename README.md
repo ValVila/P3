@@ -77,7 +77,7 @@ Ejercicios básicos
   * Optimice los parámetros de su sistema de estimación de pitch e inserte una tabla con las tasas de error
     y el *score* TOTAL proporcionados por `pitch_evaluate` en la evaluación de la base de datos 
 	`pitch_db/train`..
-	Usando de threshold para center clipping 0.027 y los siguientes inputs hemos conseguido un % de detecion del 91.72%
+	Usando de threshold para center clipping 0.027 y los siguientes inputs hemos conseguido un porcentaje de detecion del 91.72%
 	<img src="img/input.png" width="640" align="center">
 	<img src="img/total%25.png" width="640" align="center">
 	
