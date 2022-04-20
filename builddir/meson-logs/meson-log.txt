@@ -1,4 +1,4 @@
-Build started at 2022-03-29T12:09:31.904945
+Build started at 2022-04-20T17:02:09.469752
 Main binary: /usr/bin/python3
 Build Options: -Dbuildtype=debug -Dbackend=ninja
 Python system: Linux
@@ -27,8 +27,8 @@ Build targets in project: 5
 
 Found ninja-1.10.1 at /usr/bin/ninja
 Running compile:
-Working directory:  /tmp/tmp0j6dlxwn
-Command line:  c++ /tmp/tmp0j6dlxwn/testfile.cpp -o /tmp/tmp0j6dlxwn/output.obj -pipe -D_FILE_OFFSET_BITS=64 -c -std=c++11 
+Working directory:  /tmp/tmpm6sw_8l2
+Command line:  c++ /tmp/tmpm6sw_8l2/testfile.cpp -o /tmp/tmpm6sw_8l2/output.obj -pipe -D_FILE_OFFSET_BITS=64 -c -std=c++11 
 
 Code:
  int i = static_cast<int>(0);
@@ -38,8 +38,8 @@ Compiler stderr:
  
 Compiler accepts -std=c++11: YES
 Running compile:
-Working directory:  /home/escopetilla/Desktop/PAV/P3/builddir/meson-private/tmptm7ckhbt
-Command line:  c++ /home/escopetilla/Desktop/PAV/P3/builddir/meson-private/tmptm7ckhbt/testfile.cpp -o /home/escopetilla/Desktop/PAV/P3/builddir/meson-private/tmptm7ckhbt/output.obj -pipe -c -D_FILE_OFFSET_BITS=64 -O0 -fpermissive --print-search-dirs 
+Working directory:  /home/escopetilla/Desktop/PAV/P3/builddir/meson-private/tmpnb1h5r7i
+Command line:  c++ /home/escopetilla/Desktop/PAV/P3/builddir/meson-private/tmpnb1h5r7i/testfile.cpp -o /home/escopetilla/Desktop/PAV/P3/builddir/meson-private/tmpnb1h5r7i/output.obj -pipe -c -D_FILE_OFFSET_BITS=64 -O0 -fpermissive --print-search-dirs 
 
 Code:
  
