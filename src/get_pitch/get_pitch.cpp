@@ -37,19 +37,7 @@ Arguments:
                     - One line per frame with the estimated f0
                     - If considered unvoiced, f0 must be set to f0 = 0
 )";
-int MOT(int a, int b, int c) //middle of 3 values
-{
-    // Checking for b
-    if ((a < b && b < c) || (c < b && b < a))
-       return b;
- 
-    // Checking for a
-    else if ((b < a && a < c) || (c < a && a < b))
-       return a;
- 
-    else
-       return c;
-}
+
 
 int main(int argc, const char *argv[]) {
 	/// \TODO 
@@ -98,10 +86,7 @@ int main(int argc, const char *argv[]) {
     
   }
 
-
   /// \DONE central-clipping 
-
-
 
   // Iterate for each frame and save values in f0 vector
   vector<float>::iterator iX;
