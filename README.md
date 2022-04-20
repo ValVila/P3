@@ -57,7 +57,8 @@ Ejercicios básicos
 	    Recuerde configurar los paneles de datos para que el desplazamiento de ventana sea el adecuado, que
 		en esta práctica es de 15 ms.
 		
-                <img src="img/pitch1.PNG" width="640" align="center">
+		
+      <img src="img/pitch1.PNG" width="640" align="center">
 
 
       - Use el estimador de pitch implementado en el programa `wavesurfer` en una señal de prueba y compare
@@ -67,7 +68,8 @@ Ejercicios básicos
 		Aunque puede usar el propio Wavesurfer para obtener la representación, se valorará
 	 	el uso de alternativas de mayor calidad (particularmente Python).
 		
-                <img src="img/pitch2.PNG" width="640" align="center">
+		
+       <img src="img/pitch2.PNG" width="640" align="center">
 
   
   * Optimice los parámetros de su sistema de estimación de pitch e inserte una tabla con las tasas de error
