@@ -59,6 +59,8 @@ Ejercicios básicos
 		
 		
       <img src="img/pitch1.PNG" width="640" align="center">
+      
+      **Arriba la autocorrelación normalizada de uno seguido de la autocorrelación en su máximo secundario seguido de la patoencia de la señal
 
 
       - Use el estimador de pitch implementado en el programa `wavesurfer` en una señal de prueba y compare
@@ -69,7 +71,7 @@ Ejercicios básicos
 	 	el uso de alternativas de mayor calidad (particularmente Python).
 		
 		
-       <img src="img/pitch2.PNG" width="640" align="center">
+       <img src="img/pitch2.png" width="640" align="center">
 
   
   * Optimice los parámetros de su sistema de estimación de pitch e inserte una tabla con las tasas de error
