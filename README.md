@@ -60,7 +60,7 @@ Ejercicios básicos
 		
       <img src="img/pitch1.PNG" width="640" align="center">
       
-      **Arriba la autocorrelación normalizada de uno seguido de la autocorrelación en su máximo secundario seguido de la patoencia de la señal
+      **Arriba la autocorrelación normalizada de uno seguido de la autocorrelación en su máximo secundario seguido de la patoencia de la señal**
 
 
       - Use el estimador de pitch implementado en el programa `wavesurfer` en una señal de prueba y compare
