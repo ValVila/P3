@@ -27,6 +27,7 @@ Ejercicios básicos
 	 <img src="img/img4.png" width="640" align="center">
 	 
 	 **Figura 1: segmento de 30ms de un fonema sonoro en el eje X los segundos y el eje Y la amplitud**
+	 
 	 **Figura 2: autocorrelación del segmento sonoro en el eje X las muestres y el eje Y la amplitud**
 
    * Determine el mejor candidato para el periodo de pitch localizando el primer máximo secundario de la
