@@ -77,7 +77,7 @@ namespace upc {
     if (x.size() != frameLen)
       return -1.0F;
       
-      float max_pot = *std::max_element(x.begin(), x.end());
+      float max_pot = *std::max_element(x.begin(), x.end()); //normalizar funcion
       max_pot = *std::max_element(x.begin(), x.end());
       for (int i = 0; i < (int)x.size(); i++)
       x[i] = x[i]/ max_pot;
