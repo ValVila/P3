@@ -72,6 +72,10 @@ Ejercicios de ampliación
 
   * Inserte un *pantallazo* en el que se vea el mensaje de ayuda del programa y un ejemplo de utilización
     con los argumentos añadidos.
+    
+    <img src="img/get_pitchhelp.png" width="640" align="center">
+
+    <img src="img/param.png" width="640" align="center">
 
 - Implemente las técnicas que considere oportunas para optimizar las prestaciones del sistema de estimación
   de pitch.
@@ -96,6 +100,18 @@ Ejercicios de ampliación
   También se valorará la realización de un estudio de los parámetros involucrados. Por ejemplo, si se opta
   por implementar el filtro de mediana, se valorará el análisis de los resultados obtenidos en función de
   la longitud del filtro.
+   
+  Hemos usado center clipping para el preprocesado y el fitro de mediana para el post procesado también hemos
+  normalizado el señal a la entrada así tenemos unos resultados mas claros.
+  
+  **NORMALIZADO**
+  <img src="img/normalizar.png" width="640" align="center">
+  
+  **CENTER CLIPPING**
+  <img src="img/centerclipping.png" width="640" align="center">
+  
+  **FILTRO MEDIANA**
+  <img src="img/filtromediana.png" width="640" align="center">
    
 
 Evaluación *ciega* del estimador
